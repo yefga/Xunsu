@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="Xunsu Logo" width="200">
+</p>
+
 # Xunsu
 
 A lightweight alternative to fastlane, written entirely in Swift 6.
