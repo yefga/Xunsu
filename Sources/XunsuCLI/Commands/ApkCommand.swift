@@ -68,8 +68,6 @@ struct ApkCommand: AsyncParsableCommand {
     }
 
     func run() async throws {
-        let prompt = TextPrompt(useColors: !json)
-
         // Convert args to action types
         let buildType: ApkBuildType
         switch self.buildType {

@@ -306,11 +306,7 @@ public struct ApkAction: Action {
         switch outputType {
         case .apk:
             fileExtension = "apk"
-            if let flavor = flavor {
-                outputDir = buildDir.appendingPathComponent("flutter-apk")
-            } else {
-                outputDir = buildDir.appendingPathComponent("flutter-apk")
-            }
+            outputDir = buildDir.appendingPathComponent("flutter-apk")
         case .appbundle:
             fileExtension = "aab"
             outputDir = buildDir.appendingPathComponent("bundle/\(buildType.rawValue)")

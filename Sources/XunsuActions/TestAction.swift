@@ -221,7 +221,7 @@ public struct TestAction: Action {
 
         var total = 0
         var failed = 0
-        var skipped = 0
+        let skipped = 0
 
         // Look for "Executed X tests" pattern
         if let range = output.range(of: "Executed (\\d+) test", options: .regularExpression) {
