@@ -27,7 +27,7 @@ public struct Xunsu: AsyncParsableCommand {
               release - Submit to App Store
               init    - Initialize project configuration
             """,
-        version: "0.1.0",
+        version: "0.1.1",
         subcommands: [
             BuildCommand.self,
             TestCommand.self,
