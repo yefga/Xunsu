@@ -233,7 +233,7 @@ public struct ApkAction: Action {
         )
 
         let duration = Date().timeIntervalSince(startTime)
-        await context.logger.info("Build completed in \(String(format: "%.1f", duration))s")
+        await context.logger.info("Build completed in \(DurationFormatter.format(duration))")
 
         return ApkOutput(
             outputPaths: outputPaths,

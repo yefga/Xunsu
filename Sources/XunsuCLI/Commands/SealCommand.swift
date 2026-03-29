@@ -176,7 +176,8 @@ struct SealCommand: AsyncParsableCommand {
                     throw error
                 }
 
-                print("  DMG: \(output.dmgPath.path)")
+                let dmgSize = FileSizeFormatter.sizeOfFile(at: output.dmgPath) ?? "N/A"
+                print("  DMG: \(output.dmgPath.path) (\(dmgSize))")
                 if let notaryID = output.notarizationID {
                     print("  Notarization ID: \(notaryID)")
                 }

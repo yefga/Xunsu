@@ -178,7 +178,7 @@ public struct TestAction: Action {
         )
 
         if passed {
-            await context.logger.info("All tests passed (\(testSummary.total) tests in \(String(format: "%.1f", duration))s)")
+            await context.logger.info("All tests passed (\(testSummary.total) tests in \(DurationFormatter.format(duration)))")
         } else {
             await context.logger.error("\(testSummary.failed) tests failed")
         }

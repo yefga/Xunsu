@@ -114,7 +114,7 @@ struct ApkCommand: AsyncParsableCommand {
                 let output: ApkOutput
                 do {
                     output = try await action.run(options: options, context: context)
-                    spinner.success("Build completed in \(String(format: "%.1f", output.buildDuration))s")
+                    spinner.success("Build completed in \(DurationFormatter.format(output.buildDuration))")
                 } catch {
                     spinner.failure(formatApkError(error))
                     throw error
@@ -122,8 +122,8 @@ struct ApkCommand: AsyncParsableCommand {
 
                 print("  Output\(output.outputPaths.count > 1 ? "s" : ""):")
                 for path in output.outputPaths {
-                    let size = fileSize(path)
-                    print("    \(path.lastPathComponent) \(size)")
+                    let size = FileSizeFormatter.sizeOfFile(at: path) ?? "N/A"
+                    print("    \(path.lastPathComponent) (\(size))")
                 }
             }
         } catch {
@@ -132,17 +132,6 @@ struct ApkCommand: AsyncParsableCommand {
             }
             throw ExitCode.failure
         }
-    }
-
-    private func fileSize(_ url: URL) -> String {
-        guard let attrs = try? FileManager.default.attributesOfItem(atPath: url.path),
-              let size = attrs[.size] as? Int64 else {
-            return ""
-        }
-
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .file
-        return "(\(formatter.string(fromByteCount: size)))"
     }
 
     private func formatApkError(_ error: Error) -> String {

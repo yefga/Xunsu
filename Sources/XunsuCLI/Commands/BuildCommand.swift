@@ -154,15 +154,21 @@ struct BuildCommand: AsyncParsableCommand {
                 let output: BuildOutput
                 do {
                     output = try await action.run(options: options, context: context)
-                    spinner.success("Build completed in \(String(format: "%.1f", output.buildDuration))s")
+                    spinner.success("Build completed in \(DurationFormatter.format(output.buildDuration))")
                 } catch {
                     spinner.failure(formatBuildError(error))
                     throw error
                 }
 
-                print("  \(simulator ? "Output" : "Archive"): \(output.archivePath.path)")
+                let archiveSize = FileSizeFormatter.sizeOfDirectory(at: output.archivePath) ?? "N/A"
+                print("  \(simulator ? "Output" : "Archive"): \(output.archivePath.path) (\(archiveSize))")
                 if let exportPath = output.exportPath {
-                    print("  Export: \(exportPath.path)")
+                    let exportSize = FileSizeFormatter.sizeOfDirectory(at: exportPath) ?? "N/A"
+                    print("  Export: \(exportPath.path) (\(exportSize))")
+                }
+                if let appPath = output.appPath {
+                    let appSize = FileSizeFormatter.sizeOfDirectory(at: appPath) ?? "N/A"
+                    print("  App: \(appPath.path) (\(appSize))")
                 }
             }
         } catch {
