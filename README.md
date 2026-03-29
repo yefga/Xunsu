@@ -10,20 +10,13 @@ A lightweight alternative to fastlane, written entirely in Swift 6.
 
 ## Why Xunsu?
 
-Fastlane is powerful but comes with baggage:
-- 2-minute Ruby boot time on every run
-- 60+ gem dependencies for simple workflows
-- Ruby version conflicts and Bundler headaches
-
-Xunsu takes a different approach:
-- **Pure Swift** - No Ruby, no gems, no bundle install
-- **Fast startup** - Near-instant execution
+- **Pure Swift** - Fast startup, near-instant execution
 - **Interactive TUI** - Guided prompts when you need them
 - **CI/CD ready** - All options available via flags or environment variables
 
 ## Installation
 
-### Homebrew (coming soon)
+### Homebrew
 
 ```bash
 brew install yefga/tap/xunsu
@@ -119,7 +112,7 @@ All commands work in non-interactive mode by default. Use environment variables 
 
 ## Requirements
 
-- macOS 11 or later
+- macOS 13 or later
 - Swift 6.0 / Xcode 16+ (to build from source)
 - For notarization: Apple Developer account with Developer ID certificate
 
