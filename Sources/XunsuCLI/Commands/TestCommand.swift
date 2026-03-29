@@ -107,7 +107,7 @@ struct TestCommand: AsyncParsableCommand {
                 } else {
                     prompt.error("\(output.failedTests) of \(output.totalTests) tests failed")
                 }
-                print("  Duration: \(String(format: "%.1f", output.duration))s")
+                print("  Duration: \(DurationFormatter.format(output.duration))")
                 if let resultPath = output.resultBundlePath {
                     print("  Results: \(resultPath.path)")
                 }
