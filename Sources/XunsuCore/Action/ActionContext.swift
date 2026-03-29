@@ -22,9 +22,6 @@ public actor ActionContext {
     /// Environment variables
     private var environment: [String: String]
 
-    /// Artifacts produced by actions (for passing between actions)
-    private var artifacts: [String: Any] = [:]
-
     /// Whether we're running in CI environment
     public let isCI: Bool
 
@@ -52,36 +49,6 @@ public actor ActionContext {
     /// Get an environment variable
     public func env(_ key: String) -> String? {
         environment[key]
-    }
-
-    /// Set an environment variable
-    public func setEnv(_ key: String, value: String) {
-        environment[key] = value
-    }
-
-    /// Store an artifact for later retrieval
-    public func setArtifact<T: Sendable>(_ key: String, value: T) {
-        artifacts[key] = value
-    }
-
-    /// Retrieve a stored artifact
-    public func getArtifact<T>(_ key: String) -> T? {
-        artifacts[key] as? T
-    }
-
-    /// Get the current environment dictionary
-    public func getEnvironment() -> [String: String] {
-        environment
-    }
-
-    /// Create a child context with the same settings
-    public func childContext() -> ActionContext {
-        ActionContext(
-            projectPath: projectPath,
-            logger: logger,
-            environment: environment,
-            interactive: interactive
-        )
     }
 }
 

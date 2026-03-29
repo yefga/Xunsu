@@ -332,11 +332,4 @@ public struct NotaryCredentialSetup {
             throw SealError.notarizationFailed("Failed to store credentials: \(result.stderr)")
         }
     }
-
-    /// List stored credential profiles
-    public func listProfiles() async throws -> [String] {
-        // xcrun notarytool doesn't have a list command, but we can try to detect
-        // This is a placeholder - in practice, users manage this themselves
-        return []
-    }
 }
