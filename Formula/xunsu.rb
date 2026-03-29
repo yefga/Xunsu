@@ -8,8 +8,8 @@
 class Xunsu < Formula
   desc "Swift-native iOS/macOS automation tool"
   homepage "https://github.com/yefga/Xunsu"
-  url "https://github.com/yefga/Xunsu/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "7cbc299e20b5a1f15bf0b9a538fa4ef04838d4e2946b420a95cf5d97a5a04b83"
+  url "https://github.com/yefga/Xunsu/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "PLACEHOLDER"
   license "MIT"
 
   depends_on xcode: ["16.0", :build]
@@ -21,6 +21,6 @@ class Xunsu < Formula
   end
 
   test do
-    assert_match "0.1.0", shell_output("#{bin}/xunsu --version")
+    assert_match "0.1.1", shell_output("#{bin}/xunsu --version")
   end
 end
